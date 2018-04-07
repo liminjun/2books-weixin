@@ -1,0 +1,12 @@
+<view class="page">
+  <view class="page__hd">
+    
+    <view class="page__title">微信授权拒绝</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-cells__title">为了使用当前小程序提供的功能，微信授权时请点击“允许”。</view>
+    <view class="weui-cells__title">
+    <button class="weui-btn mini-btn" type="primary" size="mini" bindtap="login">重新授权</button>
+    </view>
+  </view>
+</view>

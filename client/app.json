@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/demo/demo",
+    "pages/logs/logs",
+    "pages/setting/setting",
+    "pages/books/books",
+    "pages/feedback/feedback",
+    "pages/about/about",
+    "pages/unoauth/unoauth"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3197ed",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#dddddd",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/home.png",
+        "selectedIconPath": "image/home_highlight.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/books/books",
+        "iconPath": "image/books.png",
+        "selectedIconPath": "image/books_hover.png",
+        "text": "书架"
+      },
+      {
+        "pagePath": "pages/demo/demo",
+        "iconPath": "image/my.png",
+        "selectedIconPath": "image/my_hover.png",
+        "text": "我的"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "iconPath": "image/setting.png",
+        "selectedIconPath": "image/setting_highlight.png",
+        "text": "设置"
+      }
+    ]
+  }
+}
