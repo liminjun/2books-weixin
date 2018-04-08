@@ -25,6 +25,12 @@ var app = getApp();
 Page({
 
   data: {
+    indicatorDots: true,
+    autoplay: true,
+    duration: 500,
+    imgUrls: [],
+
+
     grids: [0, 1, 2, 3, 4, 5],
     remainTimeText: '',
     timerType: 'work',
@@ -42,6 +48,76 @@ Page({
     this.fetchTypeList();
 
     this.getSettingData();
+
+    this.fetchImageList();
+    this.fetchNewsList();
+
+  },
+  // 获取首页gallery图片列表
+  fetchImageList() {
+    let that = this;
+    wx.request({
+      url: "http://2books.duapp.com/api.test/news/category.list.json", //仅为示例，并非真实的接口地址
+      data: {
+        x: '',
+        y: ''
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data);
+        res.data = [
+          {
+            "title": "Linux shell",
+            "img_url": "https://img3.doubanio.com/mpic/s28350322.jpg"
+          },
+          {
+            "title": "React前端技术与工程实践",
+            "img_url": "https://img3.doubanio.com/mpic/s29419062.jpg"
+          },
+          {
+            "title": "Linux shell",
+            "img_url": "https://img3.doubanio.com/mpic/s28350322.jpg"
+          },
+          {
+            "title": "React前端技术与工程实践",
+            "img_url": "https://img3.doubanio.com/mpic/s29419062.jpg"
+          }
+        ];
+        that.setData({
+          imgUrls: res.data
+        });
+      },
+      fail: function (error) {
+        console.log(error);
+      }
+    })
+  },
+  fetchNewsList() {
+    let that = this;
+    wx.request({
+      method:"GET",
+      url: "http://2books.duapp.com/api/news_list.php?newsCategoryId=2&pageNum=1&pageSize=5", //仅为示例，并非真实的接口地址
+
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        var result=res.data;
+        if(result.meta.success){
+
+          that.setData({
+            newsList: result.data.list
+          });
+        }
+
+        
+      },
+      fail: function (error) {
+        console.log(error);
+      }
+    })
   },
   getSettingData: function () {
     var that = this;
@@ -54,10 +130,10 @@ Page({
 
       success: function (response) {
         console.log(response);
-        var responseData=response.data;
+        var responseData = response.data;
         if (responseData.result) {
           that.setData({
-            workTime:0.1,// responseData.data.task_minutes,
+            workTime: 0.1,// responseData.data.task_minutes,
             restTime: responseData.data.rest_minutes
           });
         } else {
@@ -208,7 +284,7 @@ Page({
       })
 
       this.data.log = {
-        categoryId:log.categoryId,
+        categoryId: log.categoryId,
         categoryName: log.categoryName,
         startTime: log.startTime,
         endTime: log.keepTime + log.startTime
@@ -249,9 +325,9 @@ Page({
     qcloud.request({
       login: true,
       url: 'https://w52h9qkc.qcloud.la/task/create',
-      method:"POST",
+      method: "POST",
       dataType: "json",
-      data:log,
+      data: log,
       success: function (response) {
         console.log(response);
         if (response.data.result) {
@@ -263,7 +339,7 @@ Page({
       }
     });
 
-   
+
   },
 
 

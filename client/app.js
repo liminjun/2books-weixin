@@ -47,5 +47,6 @@ App({
         userInfo: 'init',
         booksUpdate: false,  //书架是否刷新  
         myBookUpdate: false,   //我的图书是否刷新
-    }
+    },
+    api:"http://2books.duapp.com/api/"
 })

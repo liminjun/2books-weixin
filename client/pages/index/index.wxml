@@ -1,9 +1,10 @@
 <!-- 借阅管理 -->
 <view class="page">
-	<view class="section" wx:if="{{borrowMessage.length>0}}">
+	<view class="weui-panel" wx:if="{{borrowMessage.length>0}}">
+		<view class="weui-panel__hd">借书请求</view>
 		<view wx:for="{{borrowMessage}}" class="message">
 			<view class="msg-time">{{item.time}}</view>
-			<view class="msg-title">借书请求</view>
+
 			<view class="msg-content">
 				<view>
 					<text class="borrower">{{item.borrower}}</text> 请求借阅
@@ -25,35 +26,48 @@
 			</view>
 		</view>
 	</view>
+	<view class="weui-panel">
+		<view class="weui-panel__hd">新书上架</view>
+		<view class="weui-panel__bd">
+			<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" duration="{{duration}}" indicator-active-color="#cc3300">
+				<block wx:key="*this" wx:for="{{imgUrls}}">
+					<swiper-item>
+						<view>{{item.title}}</view>
+						<image src="{{item.img_url}}" class="slide-image"/>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+	</view>
+	<view class="weui-panel">
+		<view class="weui-panel__hd">扫码上传</view>
+		<view class="weui-panel__bd">
+			<view class='scan'>
+				<button class='scan-btn' bindtap="scanBook">
+					<image src="../../image/scan.png" class="scan-img"></image>扫一扫漂流图书
+				</button>
+			</view>
+		</view>
 
-	<view class="section">
-		<view class="title">新上架图书</view>
-		<view class="weui-grids">
-			<block wx:for="{{grids}}" wx:key="*this">
-				<navigator url="" class="weui-grid" hover-class="weui-grid_active">
-					<image class="weui-grid__icon" src="../images/icon_tabbar.png" />
-					<view class="weui-grid__label">Grid</view>
-				</navigator>
-			</block>
-		</view>
 	</view>
-	<view class="section">
-		<view class="title">扫码上传</view>
-		<view class='scan'>
-			<button class='scan-btn' bindtap="scanBook">
-				<image src="../../image/scan.png" class="scan-img"></image>扫一扫漂流图书
-			</button>
-		</view>
-	</view>
-	<view class="section">
-		<view class="title">系统公告</view>
-		<view class="weui-grids">
-			<block wx:for="{{grids}}" wx:key="*this">
-				<navigator url="" class="weui-grid" hover-class="weui-grid_active">
-					<image class="weui-grid__icon" src="../images/icon_tabbar.png" />
-					<view class="weui-grid__label">Grid</view>
-				</navigator>
-			</block>
+
+
+
+	<view class="weui-panel weui-panel_access">
+		<view class="weui-panel__hd">新闻和公告</view>
+		<view class="weui-panel__bd" wx:for="{{ newsList }}" wx:key="{{ index }}">
+			<navigator url="/pages/detail/detail?contentId={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+				<view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+					<image class="weui-media-box__thumb" src="https://media.ifanrusercontent.com/media/user_files/hydrogen/cb/4a/cb4a1bc4de9652150937927bbe84b2063973489e-70a7186519613af949ef83d79444e1c29679d2d6.png"
+					/>
+				</view>
+				<view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+					<view class="weui-media-box__title">{{item.title}}</view>
+					<!-- <view class="weui-media-box__desc">{{item.category_id}}</view> -->
+					<view class="weui-media-box__info__meta">{{item.publish_date}}</view>
+				</view>
+			</navigator>
+
 		</view>
 	</view>
 </view>
