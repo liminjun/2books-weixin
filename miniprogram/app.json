@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/scanCode/scanCode",
+    "pages/bookDetail/bookDetail",
+    "pages/my/my",
+
+    "pages/setting/setting",
+    "pages/books/books",
+    "pages/feedback/feedback",
+    "pages/about/about"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "私家书柜",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/home.png",
+        "selectedIconPath": "image/home_highlight.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/books/books",
+        "iconPath": "image/books.png",
+        "selectedIconPath": "image/books_hover.png",
+        "text": "书架"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "image/my.png",
+        "selectedIconPath": "image/my_hover.png",
+        "text": "我的"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "iconPath": "image/setting.png",
+        "selectedIconPath": "image/setting_highlight.png",
+        "text": "设置"
+      }
+    ]
+  }
+}
