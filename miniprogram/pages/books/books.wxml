@@ -1,32 +1,32 @@
-<!-- 图书分类 -->
-<import src="../templates/rater.wxml" />
-
-<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-	<view class="tab-item {{currentTab==index?'active':''}}" wx:for="{{tags}}" data-current="{{index}}" bindtap="swichNav">{{item.category_name}}</view>
-</scroll-view>
-<swiper class="tab-content" current="{{currentTab}}" duration="50" bindchange="switchTab">
-	<!-- style="height:{{winHeight}}rpx"> -->
-	<swiper-item wx:for="{{tags}}" wx:for-index="tagsIndex">
-		<block wx:if="{{showBooks[tagsIndex]?false:true}}">
-			<view class="loading_box">
-				<image class="loading load-img" src="../../image/loading.png"></image>
-			</view>
-		</block>
-		<block wx:else>
-			<block scroll-y="true" class="scoll-h" wx:if="{{showBooks[tagsIndex].length>0?true:false}}" bindscrolltoupper="refresh">
-				<view wx:for="{{showBooks[tagsIndex]}}" class="book" bindtap="toBorrowBook" data-isbn="{{item.isbn}}" data-bookId="{{item.book_id}}">
-					<image src="{{item.images}}" class="book-image"></image>
-					<view class="book-title">{{item.title}}</view>
-					<view class="book-rate">
-						<template is="rater" data="{{ ...{value:item.rating,cutPercent:item.rating%2/2*100} }}" />
-						<text class="rate-avg">{{item.rate}}</text>
+<view class="page">
+	<view class="page__bd">
+		<view class="weui-panel__bd" wx:for="{{ book_list }}" wx:key="{{ index }}">
+			<navigator url="/pages/book-detail?bookId={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+				<view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+					<image class="weui-media-box__thumb" src="{{item.image}}" />
+				</view>
+				<view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+					<view class="weui-media-box__title">{{item.title}}</view>
+					<view class="weui-media-box__title">{{item.author[0]}}</view>
+					<view class="weui-media-box__desc">
+						<view  wx:for="{{item.tags}}" wx:key="{{idex}}" wx:for-index="idx" wx:for-item="tag">
+							<view  class="weui-flex"   wx:if="{{idx < 2}}">
+								<view class="weui-flex__item">	{{tag.name}}</view>
+							
+							</view>
+						</view>
+					</view>
+					<view class="weui-media-box__info__meta">
+						<view class="weui-flex">
+							<view class="weui-flex__item">
+								<view class="placeholder">{{item.price}}</view>
+							</view>
+							
+						</view>
 					</view>
 				</view>
-			</block>
-			<view wx:else="{{showBooks[tagsIndex].length>0?false:true}}" class="nodata">
-				<image src="../../image/nodata.png" class="nodata-img"></image>
-				<text class="nodata-desc">暂无数据</text>
-			</view>
-		</block>
-	</swiper-item>
-</swiper>
+			</navigator>
+		</view>
+	</view>
+
+</view>

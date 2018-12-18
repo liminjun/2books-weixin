@@ -7,14 +7,14 @@
 
     "pages/setting/setting",
     "pages/books/books",
-    "pages/feedback/feedback",
+ 
     "pages/about/about"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "私家书柜",
+    "navigationBarTitleText": "图书轮流看",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -45,5 +45,9 @@
         "text": "设置"
       }
     ]
-  }
+  },
+  "debug":true,
+  "navigateToMiniProgramAppIdList": [
+    "wx8abaf00ee8c3202e"
+  ]
 }

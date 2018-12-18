@@ -1,0 +1,2 @@
+@import 'vendor/weui.wxss';
+@import 'style/page.wxss';

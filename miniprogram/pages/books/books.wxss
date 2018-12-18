@@ -1,5 +1,4 @@
 
-@import '../templates/rater.wxss';
 page{
 	height: 100%;
   }
